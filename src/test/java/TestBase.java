@@ -1,10 +1,13 @@
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
 import java.nio.file.WatchEvent;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class TestBase {
@@ -36,5 +39,20 @@ public class TestBase {
             e.printStackTrace();
         }
 
+
+    }
+
+    public void login(String email, String pas){
+        wd.findElement(By.linkText("LOGIN")).click();
+        List<WebElement> inputs = wd.findElements(By.tagName("input"));
+        fillByElement(inputs.get(0), email);
+        fillByElement(inputs.get(1), pas);
+
+        List<WebElement> buttons = wd.findElements(By.tagName("button"));
+        buttons.get(0).click();
+
+        pause(1000);
+        String text = wd.findElement(By.tagName("button")).getText();
+        Assert.assertEquals(text, "Sign Out");
     }
 }
