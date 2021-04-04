@@ -32,6 +32,13 @@ public class TestBase {
         element.sendKeys(text);
     }
 
+    public void fillByLocator(By locator, String text){
+        WebElement element = wd.findElement(locator);
+        element.click();
+        element.clear();
+        element.sendKeys(text);
+    }
+
     public void pause (int millis){
         try {
             Thread.sleep(2000);
@@ -40,6 +47,10 @@ public class TestBase {
         }
 
 
+    }
+
+    public boolean isElement(By locator){
+        return wd.findElements(locator).size()>0;
     }
 
     public void login(String email, String pas){
@@ -52,7 +63,13 @@ public class TestBase {
         buttons.get(0).click();
 
         pause(1000);
-        String text = wd.findElement(By.tagName("button")).getText();
-        Assert.assertEquals(text, "Sign Out");
+    }
+
+    public void login2(String email, String password){
+        wd.findElement(By.cssSelector("[href='/login']")).click();
+        fillByLocator(By.cssSelector("input[placeholder='Email']"), email);
+        fillByLocator(By.cssSelector("[placeholder='Password']"), password);
+        wd.findElement(By.cssSelector("button:first-of-type")).click();
+
     }
 }
