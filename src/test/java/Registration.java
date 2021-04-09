@@ -26,4 +26,21 @@ public class Registration extends TestBase{
         Assert.assertEquals(text, "Sign Out");
 
     }
+
+    @Test
+    public void registrationTest2(){
+        int index = (int)((System.currentTimeMillis()/1000)%3600);
+        String email = "Tom"+index+"@gmail.com";
+        String password = "Tom$"+index;
+        wd.findElement(By.cssSelector("[href='/login']")).click();
+        fillByLocator(By.cssSelector("[placeholder='Email']"), email);
+        fillByLocator(By.cssSelector("[placeholder='Password']"), password);
+        pause(1000);
+
+        wd.findElement(By.cssSelector("button:last-of-type")).click();
+        pause(1000);
+
+        String text = wd.findElement(By.cssSelector("button:last-of-type")).getText();
+        Assert.assertEquals(text, "Sign Out");
+    }
 }
