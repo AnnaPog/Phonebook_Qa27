@@ -46,6 +46,37 @@ public class RemoveContact extends TestBase {
 
         }
 
+    @Test
+    public void removeAllContact2(){
+        wd.findElement(By.cssSelector("[href='/login']")).click();
+        List<WebElement> contacts = wd.findElements(By.cssSelector(".contact-item_card__2SOIM"));
+//        System.out.println(contacts.size());
+//        for (WebElement el: contacts){
+//                el.click();
+//                wd.findElement(By.cssSelector(".contact-item-detailed_card__50dTS button:last-of-type")).click();
+//                pause(1000);
+//            }
+        for (int i = 0; i < contacts.size(); i++) {
+            WebElement contact = wd.findElement(By.cssSelector(".contact-item_card__2SOIM"));
+            contact.click();
+            pause(1000);
+            WebElement removeBtn = wd.findElement(By.cssSelector(".contact-item-detailed_card__50dTS button:last-of-type"));
+            removeBtn.click();
+        }
+        }
+
+        @Test
+        public void removeAll(){
+            wd.findElement(By.cssSelector("[href='/login']")).click();
+            while (wd.findElements(By.cssSelector(".contact-item_card__2SOIM")).size()!=0){
+                wd.findElement(By.cssSelector(".contact-item_card__2SOIM")).click();
+                pause(1000);
+                wd.findElement(By.xpath("//button[.='Remove']")).click();
+                pause(500);
+            }
+        }
+
+
         @AfterMethod
         public void postConditions() {
         wd.findElement(By.cssSelector(".navbar-logged_nav__2Hx7M button")).click();
