@@ -2,6 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import models.User;
 
 import java.util.List;
 
@@ -38,6 +39,21 @@ public class LoginTest extends TestBase {
         pause(1000);
         String text = wd.findElement(By.tagName("button")).getText();
         Assert.assertEquals(text, "Sign Out");
+
+    }
+
+    @Test
+    public void LoginWithModel(){
+        openLogRegForm();
+        pause(1000);
+        fillLogRegForm(new User()
+                .withEmail("mon447233@mail.com")
+                .withPassword("Mon12$447233"));
+        clickLoginButton();
+        pause(1000);
+
+        Assert.assertEquals(takeText(By.xpath("//button[.='Sign Out']")), "Sign Out");
+        Assert.assertTrue(isLogin());
 
     }
 }

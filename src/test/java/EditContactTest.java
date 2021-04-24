@@ -25,23 +25,27 @@ public class EditContactTest extends TestBase{
         name.click();
         name.sendKeys("*");
         //fillByLocator(By.xpath("//input[@placeholder='Name']"), text2+"*");
-
         WebElement lastName = wd.findElement(By.xpath("//input[@placeholder='Last Name']"));
         edit(lastName);
-
         WebElement phone = wd.findElement(By.xpath("//input[@placeholder='Phone']"));
         edit(phone);
-
         WebElement email = wd.findElement(By.xpath("//input[@placeholder='email']"));
         edit(email);
-
         WebElement address = wd.findElement(By.xpath("//input[@placeholder='Address']"));
         edit(address);
-
         WebElement desc = wd.findElement(By.xpath("//input[@placeholder='desc']"));
         edit(desc);
-
         wd.findElement(By.xpath("//button[text()='Save']")).click();
+    }
+
+    @Test
+    public void test(){
+        wd.findElement(By.xpath("//a[.='CONTACTS']")).click();
+        wd.findElement(By.xpath("//div[@class='contact-item_card__2SOIM']")).click();
+        wd.findElement(By.xpath("//button[text()='Edit']")).click();
+        wd.findElement(By.xpath("//input[@placeholder='Address']")).clear();
+        wd.findElement(By.xpath("//input[@placeholder='Address']")).sendKeys("*");
+        pause(6000);
 
     }
 

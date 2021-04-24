@@ -1,3 +1,4 @@
+import models.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,6 +10,7 @@ import org.testng.annotations.BeforeSuite;
 import java.nio.file.WatchEvent;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import models.Contact;
 
 public class TestBase {
     WebDriver wd;
@@ -70,6 +72,52 @@ public class TestBase {
         fillByLocator(By.cssSelector("input[placeholder='Email']"), email);
         fillByLocator(By.cssSelector("[placeholder='Password']"), password);
         wd.findElement(By.cssSelector("button:first-of-type")).click();
+
+    }
+
+    public void  openLogRegForm(){
+        wd.findElement(By.xpath("//a[.='LOGIN']")).click();
+    }
+
+    public void clickLoginButton(){
+        wd.findElement(By.xpath("//button[.=' Login']")).click();
+    }
+
+    public void fillLogRegForm(User user){
+        fillByLocator(By.xpath("//input[@placeholder='Email']"), user.getEmail());
+        fillByLocator(By.xpath("//input[@placeholder='Password']"), user.getPassword());
+    }
+    public String takeText(By locator){
+        return wd.findElement(locator).getText();
+    }
+
+    public String takeText(WebElement element){
+        return element.getText();
+    }
+
+    public boolean isLogin(){
+        return isElement(By.xpath("//button[.='Sign Out']"));
+    }
+
+    public void openContactForm(){
+        wd.findElement(By.xpath("//a[@href='/add']")).click();
+    }
+
+    public void fillContactForm(Contact contact){
+        fillByLocator(By.xpath("//input[@placeholder='Name']"), contact.getName());
+        fillByLocator(By.xpath("//input[@placeholder='Last Name']"), contact.getLastName());
+        fillByLocator(By.xpath("//div[@class='add_form__2rsm2']/input[3]"), contact.getPhone());
+        fillByLocator(By.xpath("//input[@placeholder='email']"), contact.getEmail());
+        fillByLocator(By.xpath("//input[@placeholder='Address']"), contact.getAddress());
+        fillByLocator(By.xpath("//input[@placeholder='description']"), contact.getDescription());
+    }
+
+    public void saveNewContact(){
+        wd.findElement(By.xpath("//button/b[.='Save']")).click();
+    }
+
+    public boolean isSaveButtonFromAdd() {
+        return isElement(By.xpath("//button[.='Save']"));
 
     }
 }
