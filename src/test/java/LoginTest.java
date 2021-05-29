@@ -1,59 +1,55 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.testng.Assert;
-import org.testng.annotations.Test;
-import models.User;
 
+import models.User;
+import org.openqa.selenium.By;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class LoginTest extends TestBase {
+
     @Test
     public void loginTest() {
-        wd.findElement(By.linkText("LOGIN")).click();
-        List<WebElement> inputs = wd.findElements(By.tagName("input"));
-        fillByElement(inputs.get(0), "mon447233@mail.com");
-        fillByElement(inputs.get(1), "Mon12$447233");
-        pause(7000);
-
-        List<WebElement> buttons = wd.findElements(By.tagName("button"));
-        buttons.get(0).click();
-
-        pause(1000);
-        String text = wd.findElement(By.tagName("button")).getText();
-        Assert.assertEquals(text, "Sign Out");
-
+        app.getUser().openLogRegForm();
+        app.getUser().fillRegLogForm(new User().withEmail("Mon447233@mail.com").withPassword("Mon12$447233"));
+        app.getUser().clickLoginButton();
+        Assert.assertTrue(app.getUser().isElementPresent(By.xpath("//*[text()='Sign Out']")));
     }
 
-    @Test
-    public void loginTest2() {
-        wd.findElement(By.cssSelector("[href='/login']")).click();
+    @DataProvider
+    public Iterator<Object[]> dataFile() throws IOException {
+        List<Object[]> list = new ArrayList<>();
+        BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/data.csv")));
+        String line = reader.readLine();
 
-        fillByLocator(By.cssSelector("input[placeholder='Email']"), "mon447233@mail.com");
-        fillByLocator(By.cssSelector("[placeholder='Password']"), "Mon12$447233");
-
-
-        pause(7000);
-
-        wd.findElement(By.cssSelector("button:first-of-type")).click();
-
-        pause(1000);
-        String text = wd.findElement(By.tagName("button")).getText();
-        Assert.assertEquals(text, "Sign Out");
-
+        while (line != null) {
+            String[] split = line.split(";");
+            list.add(new Object[]{new User().withEmail(split[0]).withPassword(split[1])});
+            line = reader.readLine();
+        }
+        return list.iterator();
     }
 
-    @Test
-    public void LoginWithModel(){
-        openLogRegForm();
-        pause(1000);
-        fillLogRegForm(new User()
-                .withEmail("mon447233@mail.com")
-                .withPassword("Mon12$447233"));
-        clickLoginButton();
-        pause(1000);
-
-        Assert.assertEquals(takeText(By.xpath("//button[.='Sign Out']")), "Sign Out");
-        Assert.assertTrue(isLogin());
-
+    @Test (dataProvider = "dataFile")
+    public void loginTestFromFile(User user) {
+        app.getUser().openLogRegForm();
+        app.getUser().fillRegLogForm(user);
+        app.getUser().clickLoginButton();
+        Assert.assertTrue(app.getUser().isElementPresent(By.xpath("//*[text()='Sign Out']")));
     }
+
+    @AfterMethod
+    public void postConditions(){
+        app.getUser().isLogined();
+    }
+
+
 }

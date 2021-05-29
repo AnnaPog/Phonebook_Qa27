@@ -1,0 +1,36 @@
+12126 [Test worker] INFO  application.ListenerMy - Start on -->https://contacts-app.tobbymarshall815.vercel.app/
+14693 [Test worker] INFO  TestBase - start test removeOneContactTest
+14695 [Test worker] INFO  application.ListenerMy - Start search -->By.xpath: //*[text()='Sign Out']
+24740 [Test worker] INFO  application.ListenerMy - Found -->By.xpath: //*[text()='Sign Out']
+24744 [Test worker] INFO  application.ListenerMy - Start search -->By.cssSelector: [href='/login']
+24780 [Test worker] INFO  application.ListenerMy - Found -->By.cssSelector: [href='/login']
+24791 [Test worker] INFO  application.ListenerMy - Click on --> [[ChromeDriver: chrome on MAC (c900a926d93b1620b19a081ffe781d12)] -> css selector: [href='/login']]
+24979 [Test worker] INFO  application.ListenerMy - Start search -->By.xpath: //input[1]
+25005 [Test worker] INFO  application.ListenerMy - Found -->By.xpath: //input[1]
+25006 [Test worker] INFO  application.ListenerMy - Click on --> [[ChromeDriver: chrome on MAC (c900a926d93b1620b19a081ffe781d12)] -> xpath: //input[1]]
+25122 [Test worker] INFO  application.ListenerMy - Start search -->By.xpath: //input[1]
+25141 [Test worker] INFO  application.ListenerMy - Found -->By.xpath: //input[1]
+25181 [Test worker] INFO  application.ListenerMy - Start search -->By.xpath: //input[1]
+25198 [Test worker] INFO  application.ListenerMy - Found -->By.xpath: //input[1]
+25418 [Test worker] INFO  application.ListenerMy - Start search -->By.xpath: //input[2]
+25440 [Test worker] INFO  application.ListenerMy - Found -->By.xpath: //input[2]
+25440 [Test worker] INFO  application.ListenerMy - Click on --> [[ChromeDriver: chrome on MAC (c900a926d93b1620b19a081ffe781d12)] -> xpath: //input[2]]
+25982 [Test worker] INFO  application.ListenerMy - Start search -->By.xpath: //input[2]
+25996 [Test worker] INFO  application.ListenerMy - Found -->By.xpath: //input[2]
+26025 [Test worker] INFO  application.ListenerMy - Start search -->By.xpath: //input[2]
+26037 [Test worker] INFO  application.ListenerMy - Found -->By.xpath: //input[2]
+26099 [Test worker] INFO  application.ListenerMy - Start search -->By.xpath: //button[.=' Login']
+26117 [Test worker] INFO  application.ListenerMy - Found -->By.xpath: //button[.=' Login']
+26117 [Test worker] INFO  application.ListenerMy - Click on --> [[ChromeDriver: chrome on MAC (c900a926d93b1620b19a081ffe781d12)] -> xpath: //button[.=' Login']]
+26184 [Test worker] INFO  application.ListenerMy - Start search -->By.xpath: //a[.='CONTACTS']
+26917 [Test worker] INFO  application.ListenerMy - Found -->By.xpath: //a[.='CONTACTS']
+26918 [Test worker] INFO  application.ListenerMy - Click on --> [[ChromeDriver: chrome on MAC (c900a926d93b1620b19a081ffe781d12)] -> xpath: //a[.='CONTACTS']]
+26980 [Test worker] INFO  application.ListenerMy - Start search -->By.className: contact-item_card__2SOIM
+27339 [Test worker] INFO  application.ListenerMy - Found -->By.className: contact-item_card__2SOIM
+27340 [Test worker] INFO  application.ListenerMy - Start search -->By.className: contact-item_card__2SOIM
+27358 [Test worker] INFO  application.ListenerMy - Found -->By.className: contact-item_card__2SOIM
+27358 [Test worker] INFO  application.ListenerMy - Click on --> [[ChromeDriver: chrome on MAC (c900a926d93b1620b19a081ffe781d12)] -> class name: contact-item_card__2SOIM]
+27975 [Test worker] INFO  application.ListenerMy - Start search -->By.xpath: //button[.='Remove']
+27999 [Test worker] INFO  application.ListenerMy - Found -->By.xpath: //button[.='Remove']
+28000 [Test worker] INFO  application.ListenerMy - Click on --> [[ChromeDriver: chrome on MAC (c900a926d93b1620b19a081ffe781d12)] -> xpath: //button[.='Remove']]
+28555 [Test worker] INFO  TestBase - End of test removeOneContactTest
