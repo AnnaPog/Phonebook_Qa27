@@ -7,5 +7,6 @@ public class JScriptLoginTest extends TestBase{
         app.executor().clickByLocator();
         app.executor().typeTextInTextBox();
         app.executor().clickByButton();
+        app.getUser().pause(3000);
     }
 }
